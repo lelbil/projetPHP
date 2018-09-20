@@ -1,0 +1,23 @@
+version: '3'
+services:
+  server:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./localhost:/var/www/html
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./database:/var/lib/mysql
+      - ./config/my.cnf:/etc/mysql/my.cnf
+  pma:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+  front:
+    build: ./front
+    ports:
+      - 3000:3000
