@@ -21,3 +21,5 @@ services:
     build: ./front
     ports:
       - 3000:3000
+    volumes:
+      - ./front:/usr/src/app
